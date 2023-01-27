@@ -1,4 +1,4 @@
-package org.example;
+package com.ironhack.ironschool.main;
 
 public class Main {
     public static void main(String[] args) {
