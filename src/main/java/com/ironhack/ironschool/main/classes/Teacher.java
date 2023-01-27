@@ -1,7 +1,8 @@
 package com.ironhack.ironschool.main.classes;
 
+import java.util.UUID;
 public class Teacher {
-    private String teacherId;
+    private final String teacherId;
     private String name;
     private double salary;
 
@@ -9,8 +10,12 @@ public class Teacher {
     public Teacher(String name, double salary) {
         this.name = name;
         this.salary = salary;
+        teacherId =  UUID.randomUUID().toString();
     }
 
+    public String getTeacherId() {
+        return teacherId;
+    }
     public String getName() {
         return name;
     }
