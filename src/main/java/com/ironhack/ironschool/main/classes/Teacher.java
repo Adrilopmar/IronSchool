@@ -31,5 +31,4 @@ public class Teacher {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-// provando
 }
