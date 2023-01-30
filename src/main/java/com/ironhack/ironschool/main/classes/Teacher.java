@@ -1,5 +1,6 @@
 package com.ironhack.ironschool.main.classes;
 
+import java.util.Objects;
 import java.util.UUID;
 public class Teacher {
     private final String teacherId;
@@ -31,5 +32,17 @@ public class Teacher {
     public void setSalary(double salary) {
         this.salary = salary;
     }
-// provando
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Teacher teacher = (Teacher) o;
+        return Double.compare(teacher.salary, salary) == 0 && Objects.equals(name, teacher.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, salary);
+    }
 }
