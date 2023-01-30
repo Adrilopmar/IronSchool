@@ -8,15 +8,29 @@ import java.util.Objects;
 
 public class Commands {
     // storage for new classes created. once user creates any of them, they will be stored in.
-    private Map<String, Teacher> teacherList= new HashMap<>(); // store for teachers Map <teacherID,Teacher>
+    private final Map<String, Teacher> teacherList= new HashMap<>(); // store for teachers Map <teacherID,Teacher>
     // ----------> uncomment once Course class created <-----------------
     //private Map<String, Course> coursesList= new HashMap<>(); // store for teachers Map <courseID,Course>
     // ----------> uncomment once Student class created <-----------------
 //    private Map<String, Student> StudentsList= new HashMap<>(); // store for teachers Map <studentID,Student>
 
+    // create teacher with provided name and salary. then put teacher in teachers map.
     public void createTeacher(String name, double salary){
             Teacher teacher =new Teacher(name,salary);
             teacherList.put(teacher.getTeacherId(),teacher);
+    }
+    // assign teacher to a course, get course and use set teacher after get teacher through id
+    public void assignTeacherCourse(String teacherId, String courseId){
+        // uncomment once course class is added
+//        coursesList.get(courseId).setTeacher(teacherList.get(teacherId));
+    }
+    // return all teachers from list
+    public Map<String, Teacher> getTeacherList() {
+        return teacherList;
+    }
+    // return specified teacher
+    public Teacher getTeacher(String teacherId){
+        return teacherList.get(teacherId);
     }
     // ----------> uncomment once Course class created <-----------------
 //    public void createCourse(String name, double price){
@@ -31,9 +45,6 @@ public class Commands {
     public void enroll(String studentID,String courseID){
     }
 
-    public Map<String, Teacher> getTeacherList() {
-        return teacherList;
-    }
 
     @Override
     public boolean equals(Object o) {
