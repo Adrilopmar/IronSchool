@@ -1,5 +1,4 @@
 package com.ironhack.ironschool.main.classes;
-import java.io.StringReader;
 import java.util.UUID;
 
 public class Course {
@@ -10,9 +9,11 @@ public class Course {
     private double money_earned;
     private Teacher teacher = null;
 
-    public Course(String courseID, String name, double price) {
+    public Course( String name, double price, double money_earned, Teacher teacher) {
         this.name = name;
         this.price = price;
+        this.money_earned = money_earned;
+        this.teacher = teacher;
     }
 
     public String getName() {
@@ -29,5 +30,21 @@ public class Course {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public double getMoney_earned() {
+        return money_earned;
+    }
+
+    public void setMoney_earned(double money_earned) {
+        this.money_earned = money_earned;
+    }
+
+    public Teacher getTeacher() {
+        return teacher;
+    }
+
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
 }
