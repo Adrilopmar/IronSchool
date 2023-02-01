@@ -1,5 +1,6 @@
 package com.ironhack.ironschool.main.utils;
 
+import com.ironhack.ironschool.main.classes.Course;
 import com.ironhack.ironschool.main.classes.Teacher;
 
 import java.util.HashMap;
@@ -10,7 +11,7 @@ public class Commands {
     // storage for new classes created. once user creates any of them, they will be stored in.
     private final Map<String, Teacher> teacherList= new HashMap<>(); // store for teachers Map <teacherID,Teacher>
     // ----------> uncomment once Course class created <-----------------
-    //private Map<String, Course> coursesList= new HashMap<>(); // store for teachers Map <courseID,Course>
+    private final Map<String, Course> coursesList= new HashMap<>(); // store for teachers Map <courseID,Course>
     // ----------> uncomment once Student class created <-----------------
 //    private Map<String, Student> StudentsList= new HashMap<>(); // store for teachers Map <studentID,Student>
 
@@ -22,7 +23,7 @@ public class Commands {
     // assign teacher to a course, get course and use set teacher after get teacher through id
     public void assignTeacherCourse(String teacherId, String courseId){
         // uncomment once course class is added
-//        coursesList.get(courseId).setTeacher(teacherList.get(teacherId));
+        coursesList.get(courseId).setTeacher(teacherList.get(teacherId));
     }
     // return all teachers from list
     public Map<String, Teacher> getTeacherList() {
@@ -33,10 +34,13 @@ public class Commands {
         return teacherList.get(teacherId);
     }
     // ----------> uncomment once Course class created <-----------------
-//    public void createCourse(String name, double price){
-//        Course course =new Course(name,price);
-//        coursesList.put(course.getCourseId(),course);
-//    }
+    public void createCourse(String name, double price){
+        Course course =new Course(name,price);
+        coursesList.put(course.getCourseID(),course);
+    }
+    public Course getCourse(String courseId){
+        return coursesList.get(courseId);
+    }
     // ----------> uncomment once Student class created <-----------------
 //    public void createStudent(String name, String address, String email){
 //        Student student =new Student(name,address,email);
