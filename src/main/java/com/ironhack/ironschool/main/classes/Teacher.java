@@ -45,4 +45,13 @@ public class Teacher {
     public int hashCode() {
         return Objects.hash(name, salary);
     }
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "teacherId='" + teacherId + '\'' +
+                ", name='" + name + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
 }
