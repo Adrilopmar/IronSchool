@@ -2,6 +2,7 @@ package com.ironhack.ironschool.main.utils;
 
 import com.ironhack.ironschool.main.classes.Course;
 import com.ironhack.ironschool.main.classes.Teacher;
+import com.ironhack.ironschool.main.classes.Student;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,8 +36,8 @@ public class Commands {
     }
     // ----------> uncomment once Course class created <-----------------
     public void createCourse(String name, double price){
-        Course course =new Course(name,price);
-        coursesList.put(course.getCourseID(),course);
+        //Course course =new Course(name,price);
+        //coursesList.put(course.getCourseId(),course);
     }
     public Course getCourse(String courseId){
         return coursesList.get(courseId);
