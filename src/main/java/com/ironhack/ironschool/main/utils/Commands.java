@@ -14,8 +14,9 @@ public class Commands {
     // ----------> uncomment once Course class created <-----------------
     private final Map<String, Course> coursesList= new HashMap<>(); // store for teachers Map <courseID,Course>
     // ----------> uncomment once Student class created <-----------------
-//    private Map<String, Student> StudentsList= new HashMap<>(); // store for teachers Map <studentID,Student>
+    private final Map<String, Student> StudentsList= new HashMap<>(); // store for teachers Map <studentID,Student>
 
+    // ==================  teachers commands ==========================
     // create teacher with provided name and salary. then put teacher in teachers map.
     public void createTeacher(String name, double salary){
             Teacher teacher =new Teacher(name,salary);
@@ -34,19 +35,41 @@ public class Commands {
     public Teacher getTeacher(String teacherId){
         return teacherList.get(teacherId);
     }
+    // ==================  course commands ==========================
     // ----------> uncomment once Course class created <-----------------
     public void createCourse(String name, double price){
-        //Course course =new Course(name,price);
-        //coursesList.put(course.getCourseId(),course);
+        Course course =new Course(name,price);
+        coursesList.put(course.getCourseId(),course);
     }
     public Course getCourse(String courseId){
         return coursesList.get(courseId);
     }
+    public Map<String, Course> getCourses(){
+        return coursesList;
+    }
+    public double getCoursesProfit(){
+        double totalProfit=0;
+        double totalTeacherSalary=0;
+        for (Course course: coursesList.values()) {
+            totalProfit += course.getMoneyEarned();
+        }
+        for (Teacher teacher: teacherList.values()) {
+            totalTeacherSalary += teacher.getSalary();
+        }
+        return totalProfit - totalTeacherSalary;
+    }
+    // ==================  student commands ==========================
     // ----------> uncomment once Student class created <-----------------
-//    public void createStudent(String name, String address, String email){
-//        Student student =new Student(name,address,email);
-//        StudentsList.put(student.getStudentId(),student);
-//    }
+    public void createStudent(String name, String address, String email){
+        Student student =new Student(name,address,email);
+        StudentsList.put(student.getStudentId(),student);
+    }
+    public Map<String,Student> getStudentsList(){
+        return StudentsList;
+    }
+    public Student getStudent(String studentId){
+        return StudentsList.get(studentId);
+    }
     public void enroll(String studentID,String courseID){
     }
 
