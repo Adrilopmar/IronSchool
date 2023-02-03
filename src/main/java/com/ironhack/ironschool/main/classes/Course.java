@@ -3,17 +3,16 @@ import java.util.UUID;
 
 public class Course {
 
-    private String courseID = UUID.randomUUID().toString();
+    private final String courseId;
     private String name;
     private double price;
-    private double money_earned;
+    private double moneyEarned;
     private Teacher teacher = null;
 
-    public Course( String name, double price, double money_earned, Teacher teacher) {
+    public Course( String name, double price) {
         this.name = name;
         this.price = price;
-        this.money_earned = money_earned;
-        this.teacher = teacher;
+        courseId = UUID.randomUUID().toString();
     }
 
     public String getName() {
@@ -32,12 +31,12 @@ public class Course {
         this.price = price;
     }
 
-    public double getMoney_earned() {
-        return money_earned;
+    public double getMoneyEarned() {
+        return moneyEarned;
     }
 
-    public void setMoney_earned(double money_earned) {
-        this.money_earned = money_earned;
+    public void setMoneyEarned(double money_earned) {
+        this.moneyEarned = money_earned;
     }
 
     public Teacher getTeacher() {
@@ -46,5 +45,8 @@ public class Course {
 
     public void setTeacher(Teacher teacher) {
         this.teacher = teacher;
+    }
+    public String getCourseId() {
+        return courseId;
     }
 }

@@ -11,7 +11,7 @@ public class Teacher {
     public Teacher(String name, double salary) {
         this.name = name;
         this.salary = salary;
-        teacherId =  UUID.randomUUID().toString();
+        this.teacherId =  UUID.randomUUID().toString();
     }
 
     public String getTeacherId() {

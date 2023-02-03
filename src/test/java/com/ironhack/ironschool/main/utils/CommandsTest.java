@@ -18,8 +18,8 @@ class CommandsTest {
     @BeforeEach
     void setUp() {
         teacherListTest = new HashMap();
-        Teacher teacherTest1 = new Teacher("Chals",20);
-        commands.createTeacher("Chals",20);
+//        Teacher teacherTest1 = new Teacher("Chals",20);
+//        commands.createTeacher("Chals",20);
         teacherListTest.put(teacherTest1.getTeacherId(),teacherTest1);
     }
 
