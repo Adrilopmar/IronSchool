@@ -27,6 +27,8 @@ public class Commands {
     public void assignTeacherCourse(String teacherId, String courseId){
         // uncomment once course class is added
         coursesList.get(courseId).setTeacher(teacherList.get(teacherId));
+        System.out.println( teacherList.get(teacherId).getName()+" was assigned to " +
+                coursesList.get(courseId).getName());
     }
     // return all teachers from list
     public Map<String, Teacher> getTeacherList() {
@@ -74,6 +76,8 @@ public class Commands {
     public void enroll(String studentId,String courseId){
         getStudentsList().get(studentId).setCourse(coursesList.get(courseId));
         coursesList.get(courseId).setMoneyEarned(coursesList.get(courseId).getMoneyEarned()+coursesList.get(courseId).getPrice());
+        System.out.println( getStudentsList().get(studentId).getName()+" successfully enrolled into the course of " +
+                coursesList.get(courseId).getName());
     }
 
     public String getSchoolName() {
