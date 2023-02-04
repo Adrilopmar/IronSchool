@@ -48,10 +48,9 @@ public class Teacher {
 
     @Override
     public String toString() {
-        return "Teacher{" +
-                "teacherId='" + teacherId + '\'' +
-                ", name='" + name + '\'' +
-                ", salary=" + salary +
-                '}';
+        return "\nTeacherId: " + teacherId + '\n' +
+                "Name: " + name + '\n' +
+                "Salary: " + salary
+                + "\n==========================";
     }
 }

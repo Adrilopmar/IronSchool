@@ -56,11 +56,20 @@ public class Student {
 
     @Override
     public String toString() {
-        return "Student: " +
-                "studentId:'" + studentId + '\n' +
+        String courseName;
+        String courseId;
+        try {
+            courseName =  course.getName();
+            courseId=  course.getCourseId();
+        }catch (NullPointerException e){
+            courseName = null;
+            courseId=null;
+        }
+        return  "\nStudentId: " + studentId + '\n' +
                 "Name: " + name + '\n' +
                 "Address: " + address + '\n' +
                 "Email: " + email + '\n' +
-                "Course: " + course ;
+                "Course: " + courseName + " - " +courseId
+                + "\n==========================";
     }
 }
