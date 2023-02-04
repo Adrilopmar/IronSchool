@@ -14,25 +14,38 @@ public class Menu {
         String schoolName = scanner.nextLine();
         commands.setSchoolName(schoolName);
         System.out.println(commands.getSchoolName() + " Principal. Sounds awesome!");
-        System.out.println("How many courses does " + commands.getSchoolName() + " offer?");
-        int howManyCourses = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < howManyCourses; i++) {
-            System.out.println("Name of course nº" + (i + 1));
-            String courseName = scanner.nextLine();
-            System.out.println("How much does " + courseName + " it cost?");
-            int courseCost = Integer.parseInt(scanner.nextLine());
-            commands.createCourse(courseName, courseCost);
+        boolean successInputCourses = true;
+        while (successInputCourses) {
+            System.out.println("How many courses does " + commands.getSchoolName() + " offer?");
+            try {
+                int howManyCourses = Integer.parseInt(scanner.nextLine());
+                for (int i = 0; i < howManyCourses; i++) {
+                    System.out.println("Name of course nº" + (i + 1));
+                    String courseName = scanner.nextLine();
+                    // try catch wrap in while to handle errors
+                    System.out.println("How much does " + courseName + " it cost?");
+                    int courseCost = Integer.parseInt(scanner.nextLine());
+                    commands.createCourse(courseName, courseCost);
+                    successInputCourses = false;
+                }
+            } catch (NumberFormatException e) {
+                successInputCourses = true;
+                System.out.println("error");
+            }
         }
+        // try catch wrap in while to handle errors
         System.out.println("Ok, now let's talk about teachers.\nHow many teachers does " + schoolName + " has?");
         int howManyteachers = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < howManyteachers; i++) {
             System.out.println("Name of teacher nº" + (i + 1));
             String teacherName = scanner.nextLine();
+            // try catch wrap in while to handle errors
             System.out.println("How much does " + teacherName + " earn ?");
             int teacherSalary = Integer.parseInt(scanner.nextLine());
             commands.createTeacher(teacherName, teacherSalary);
         }
         System.out.println("Perfect then.\nNow for last but not least, let's talk about students");
+        // try catch wrap in while to handle errors
         System.out.println("How many students does the amazing " + schoolName + " has?");
         int howManyStudents = Integer.parseInt(scanner.nextLine());
         for (int i = 0; i < howManyStudents; i++) {
@@ -65,66 +78,71 @@ public class Menu {
         System.out.println("10 - Exit - This command will close the program.");
         String commandMenu = scannerMenu.nextLine();
         commandMenu=  commandMenu.toLowerCase();
-
+            String pressEnterToContinue;
             switch (commandMenu) {
                 case "1", "enroll":
                     System.out.println("Insert student ID");
                     String studentId = scannerMenu.nextLine();
                     System.out.println("Insert course ID");
                     String courseId = scannerMenu.nextLine();
+                    // try catch wrap in while to handle errors
                     commands.enroll(studentId, courseId);
                     System.out.println("press enter to continue");
-                    scannerMenu.nextLine();
+                    pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "2", "assign":
                     System.out.println("Insert teacher ID");
                     String assignTeacherId = scannerMenu.nextLine();
                     System.out.println("Insert course ID");
                     String assignCourseId = scannerMenu.nextLine();
+                    // try catch wrap in while to handle errors
                     commands.assignTeacherCourse(assignTeacherId, assignCourseId);
                     System.out.println("press enter to continue");
-                    scannerMenu.nextLine();
+                    pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "3", "show courses":
                     System.out.println(commands.getCourses());
                     System.out.println("press enter to continue");
-                    scannerMenu.nextLine();
+                    pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "4", "lookup course":
                     System.out.println("Insert course ID");
                     String courseDetails = scannerMenu.nextLine();
+                    // try catch wrap in while to handle errors
                     commands.getCourse(courseDetails);
                     System.out.println("press enter to continue");
-                    scannerMenu.nextLine();
+                    pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "5", "show students":
                     System.out.println(commands.getStudentsList());
                     System.out.println("press enter to continue");
-                    scannerMenu.nextLine();
+                    pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "6", "lookup student":
                     System.out.println("Insert student ID");
                     String studentDetails = scannerMenu.nextLine();
+                    // try catch wrap in while to handle errors
                     commands.getStudent(studentDetails);
                     System.out.println("press enter to continue");
-                    scannerMenu.nextLine();
+                    pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "7", "show teachers":
                     System.out.println(commands.getTeacherList());
                     System.out.println("press enter to continue");
-                    scannerMenu.nextLine();
+                    pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "8", "lookup teacher":
                     System.out.println("Insert teacher ID");
                     String teacherDetails = scannerMenu.nextLine();
+                    // try catch wrap in while to handle errors
                     commands.getTeacher(teacherDetails);
                     System.out.println("press enter to continue");
-                    scannerMenu.nextLine();
+                    pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "9", "show profit":
                     System.out.println(commands.getCoursesProfit());
                     System.out.println("press enter to continue");
-                    scannerMenu.nextLine();
+                    pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "10", "exit":
                     isMenuOn = false;

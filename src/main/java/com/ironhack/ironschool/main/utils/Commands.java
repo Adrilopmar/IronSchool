@@ -13,7 +13,7 @@ public class Commands {
     // storage for new classes created. once user creates any of them, they will be stored in.
     private final Map<String, Teacher> teacherList= new HashMap<>(); // store for teachers Map <teacherID,Teacher>
     // ----------> uncomment once Course class created <-----------------
-    private static final Map<String, Course> coursesList= new HashMap<>(); // store for teachers Map <courseID,Course>
+    private final Map<String, Course> coursesList= new HashMap<>(); // store for teachers Map <courseID,Course>
     // ----------> uncomment once Student class created <-----------------
     private final Map<String, Student> StudentsList= new HashMap<>(); // store for teachers Map <studentID,Student>
 
@@ -38,7 +38,7 @@ public class Commands {
     }
     // ==================  course commands ==========================
     // ----------> uncomment once Course class created <-----------------
-    public static void createCourse(String name, double price){
+    public void createCourse(String name, double price){
         Course course =new Course(name,price);
         coursesList.put(course.getCourseId(),course);
     }
