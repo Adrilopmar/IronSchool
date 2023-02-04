@@ -8,21 +8,20 @@ public class Menu {
     static Commands commands = new Commands();
     public static void start() {
         Commands commands = new Commands();
-        Scanner scanner = new Scanner(System.in); // opening scanner to get info from user
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Hello Principal, \n Welcome to School Simulator! \n" +
                 "First things first, what's the name of your school? ");
         String schoolName = scanner.nextLine();
         commands.setSchoolName(schoolName);
         System.out.println(commands.getSchoolName() + " Principal. Sounds awesome!");
-        boolean successInputCourses = true;
-        while (successInputCourses) {
+        boolean successInputCourses = false;
+        do {
             System.out.println("How many courses does " + commands.getSchoolName() + " offer?");
             try {
                 int howManyCourses = Integer.parseInt(scanner.nextLine());
                 for (int i = 0; i < howManyCourses; i++) {
                     System.out.println("Name of course nº" + (i + 1));
                     String courseName = scanner.nextLine();
-                    // try catch wrap in while to handle errors
                     System.out.println("How much does " + courseName + " it cost?");
                     int courseCost = Integer.parseInt(scanner.nextLine());
                     commands.createCourse(courseName, courseCost);
@@ -30,35 +29,52 @@ public class Menu {
                 }
             } catch (NumberFormatException e) {
                 successInputCourses = true;
-                System.out.println("error");
+                System.out.println("Error. Please put input in number format. Example: 1, 2, 3  ...");
             }
-        }
-        // try catch wrap in while to handle errors
-        System.out.println("Ok, now let's talk about teachers.\nHow many teachers does " + schoolName + " has?");
-        int howManyteachers = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < howManyteachers; i++) {
-            System.out.println("Name of teacher nº" + (i + 1));
-            String teacherName = scanner.nextLine();
-            // try catch wrap in while to handle errors
-            System.out.println("How much does " + teacherName + " earn ?");
+        } while (successInputCourses) ;
+        boolean successInputTeachers = false;
+        do {
+            System.out.println("Ok, now let's talk about teachers.\nHow many teachers does " + schoolName + " has?");
+            try {
+              int howManyteachers = Integer.parseInt(scanner.nextLine());
+              for (int i = 0; i < howManyteachers; i++) {
+                  System.out.println("Name of teacher nº" + (i + 1));
+                  String teacherName = scanner.nextLine();
+                  System.out.println("How much does " + teacherName + " earn ?");
             int teacherSalary = Integer.parseInt(scanner.nextLine());
             commands.createTeacher(teacherName, teacherSalary);
+            successInputTeachers = false;
         }
+            } catch (NumberFormatException e) {
+                successInputTeachers = true;
+                    System.out.println("Error. Please put input in number format.");
+            }
+
+        }while (successInputTeachers);
         System.out.println("Perfect then.\nNow for last but not least, let's talk about students");
-        // try catch wrap in while to handle errors
-        System.out.println("How many students does the amazing " + schoolName + " has?");
-        int howManyStudents = Integer.parseInt(scanner.nextLine());
-        for (int i = 0; i < howManyStudents; i++) {
-            System.out.println("Name of student nº" + (i + 1));
-            String studentName = scanner.nextLine();
-            System.out.println("What's " + studentName + "'s address ?");
-            String studentAddress = scanner.nextLine();
-            System.out.println("What's " + studentName + "'s email ?");
-            String studentEmail = scanner.nextLine();
-            commands.createStudent(studentName, studentAddress, studentEmail);
-        }
+        boolean successInputStudents = false;
+        do {
+            System.out.println("Ok, now let's talk about teachers.\nHow many teachers does " + schoolName + " has?");
+            try {
+                    System.out.println("How many students does the amazing " + schoolName + " has?");
+                    int howManyStudents = Integer.parseInt(scanner.nextLine());
+                    for (int i = 0; i < howManyStudents; i++) {
+                        System.out.println("Name of student nº" + (i + 1));
+                        String studentName = scanner.nextLine();
+                        System.out.println("What's " + studentName + "'s address ?");
+                        String studentAddress = scanner.nextLine();
+                        System.out.println("What's " + studentName + "'s email ?");
+                        String studentEmail = scanner.nextLine();
+                        commands.createStudent(studentName, studentAddress, studentEmail);
+                        successInputStudents = false;
+                    }
+            } catch (NumberFormatException e) {
+                successInputStudents = true;
+                System.out.println("Error. Please put input in number format. Example: 1, 2, 3 ... ");
+            }
+        }while (successInputStudents);
         System.out.println("Ok... I think everything is set up.");
-//        scanner.close();
+        scanner.close();
     }
 
     public static void menuCommands() {
