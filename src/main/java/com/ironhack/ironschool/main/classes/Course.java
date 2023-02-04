@@ -52,11 +52,20 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course: " +
-                "CourseId: " + courseId + '\n' +
+        String teacherName;
+        String teacherId;
+        try {
+            teacherName =  teacher.getName();
+            teacherId=  teacher.getTeacherId();
+        }catch (NullPointerException e){
+            teacherName = null;
+            teacherId=null;
+        }
+        return "\nCourseId: " + courseId + '\n' +
                 "Name: " + name + '\n' +
                 "Price: " + price +"\n"+
                 "MoneyEarned: " + moneyEarned +"\n"+
-                "Teacher: " + teacher +"\n";
+                "Teacher: " + teacherName + " - "+ teacherId
+                + "\n==========================";
     }
 }
