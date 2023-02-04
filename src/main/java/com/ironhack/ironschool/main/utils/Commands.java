@@ -9,10 +9,11 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Commands {
+    private String schoolName;
     // storage for new classes created. once user creates any of them, they will be stored in.
     private final Map<String, Teacher> teacherList= new HashMap<>(); // store for teachers Map <teacherID,Teacher>
     // ----------> uncomment once Course class created <-----------------
-    private final Map<String, Course> coursesList= new HashMap<>(); // store for teachers Map <courseID,Course>
+    private static final Map<String, Course> coursesList= new HashMap<>(); // store for teachers Map <courseID,Course>
     // ----------> uncomment once Student class created <-----------------
     private final Map<String, Student> StudentsList= new HashMap<>(); // store for teachers Map <studentID,Student>
 
@@ -37,7 +38,7 @@ public class Commands {
     }
     // ==================  course commands ==========================
     // ----------> uncomment once Course class created <-----------------
-    public void createCourse(String name, double price){
+    public static void createCourse(String name, double price){
         Course course =new Course(name,price);
         coursesList.put(course.getCourseId(),course);
     }
@@ -70,9 +71,18 @@ public class Commands {
     public Student getStudent(String studentId){
         return StudentsList.get(studentId);
     }
-    public void enroll(String studentID,String courseID){
+    public void enroll(String studentId,String courseId){
+        getStudentsList().get(studentId).setCourse(coursesList.get(courseId));
+        coursesList.get(courseId).setMoneyEarned(coursesList.get(courseId).getMoneyEarned()+coursesList.get(courseId).getPrice());
     }
 
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
 
     @Override
     public boolean equals(Object o) {

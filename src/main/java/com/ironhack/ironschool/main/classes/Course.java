@@ -49,4 +49,14 @@ public class Course {
     public String getCourseId() {
         return courseId;
     }
+
+    @Override
+    public String toString() {
+        return "Course: " +
+                "CourseId: " + courseId + '\n' +
+                "Name: " + name + '\n' +
+                "Price: " + price +"\n"+
+                "MoneyEarned: " + moneyEarned +"\n"+
+                "Teacher: " + teacher +"\n";
+    }
 }
