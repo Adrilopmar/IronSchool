@@ -8,11 +8,5 @@ public class Main {
     public static void main(String[] args) {
         Menu.start();
         Menu.menuCommands();
-//        Commands commands = new Commands();
-//
-//        Commands.createCourse("asd",123);
-//        System.out.println(commands.getCourses());
-
-
     }
 }
