@@ -41,9 +41,9 @@ public class Menu {
                   System.out.println("Name of teacher nº" + (i + 1));
                   String teacherName = scanner.nextLine();
                   System.out.println("How much does " + teacherName + " earn ?");
-            int teacherSalary = Integer.parseInt(scanner.nextLine());
-            commands.createTeacher(teacherName, teacherSalary);
-            successInputTeachers = false;
+                  int teacherSalary = Integer.parseInt(scanner.nextLine());
+                  commands.createTeacher(teacherName, teacherSalary);
+                  successInputTeachers = false;
         }
             } catch (NumberFormatException e) {
                 successInputTeachers = true;
@@ -95,24 +95,39 @@ public class Menu {
         String commandMenu = scannerMenu.nextLine();
         commandMenu=  commandMenu.toLowerCase();
             String pressEnterToContinue;
+            boolean errorData;
             switch (commandMenu) {
                 case "1", "enroll":
-                    System.out.println("Insert student ID");
-                    String studentId = scannerMenu.nextLine();
-                    System.out.println("Insert course ID");
-                    String courseId = scannerMenu.nextLine();
-                    // try catch wrap in while to handle errors
-                    commands.enroll(studentId, courseId);
+                    do {
+                        System.out.println("Insert student ID");
+                        String studentId = scannerMenu.nextLine();
+                        System.out.println("Insert course ID");
+                        String courseId = scannerMenu.nextLine();
+                        errorData = false;
+                        try{
+                            commands.enroll(studentId, courseId);
+                        } catch (NullPointerException e){
+                            System.out.println("Insert a valid Student ID & Course ID");
+                            errorData =true;
+                        }
+                    }while (errorData);
                     System.out.println("press enter to continue");
                     pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "2", "assign":
-                    System.out.println("Insert teacher ID");
-                    String assignTeacherId = scannerMenu.nextLine();
-                    System.out.println("Insert course ID");
-                    String assignCourseId = scannerMenu.nextLine();
-                    // try catch wrap in while to handle errors
-                    commands.assignTeacherCourse(assignTeacherId, assignCourseId);
+                    do {
+                        System.out.println("Insert teacher ID");
+                        String assignTeacherId = scannerMenu.nextLine();
+                        System.out.println("Insert course ID");
+                        String assignCourseId = scannerMenu.nextLine();
+                        errorData = false;
+                        try {
+                            commands.assignTeacherCourse(assignTeacherId, assignCourseId);
+                        }catch (NullPointerException e){
+                            System.out.println("Insert a valid Teacher ID & Course ID");
+                            errorData =true;
+                        }
+                    }while (errorData);
                     System.out.println("press enter to continue");
                     pressEnterToContinue = scannerMenu.nextLine();
                     break;
@@ -122,10 +137,17 @@ public class Menu {
                     pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "4", "lookup course":
+                    do{
                     System.out.println("Insert course ID");
                     String courseDetails = scannerMenu.nextLine();
-                    // try catch wrap in while to handle errors
+                        errorData =false;
+                        try {
                     commands.getCourse(courseDetails);
+                        }catch (NullPointerException e){
+                            System.out.println("Insert a valid Course ID");
+                            errorData =true;
+                        }
+                    }while (errorData);
                     System.out.println("press enter to continue");
                     pressEnterToContinue = scannerMenu.nextLine();
                     break;
@@ -135,10 +157,17 @@ public class Menu {
                     pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "6", "lookup student":
-                    System.out.println("Insert student ID");
-                    String studentDetails = scannerMenu.nextLine();
-                    // try catch wrap in while to handle errors
-                    commands.getStudent(studentDetails);
+                    do{
+                        System.out.println("Insert student ID");
+                        String studentDetails = scannerMenu.nextLine();
+                        errorData=false;
+                    try {
+                        commands.getStudent(studentDetails);
+                    }catch (NullPointerException e){
+                        System.out.println("Insert a valid Student ID");
+                        errorData =true;
+                }
+                    }while(errorData);
                     System.out.println("press enter to continue");
                     pressEnterToContinue = scannerMenu.nextLine();
                     break;
@@ -148,10 +177,17 @@ public class Menu {
                     pressEnterToContinue = scannerMenu.nextLine();
                     break;
                 case "8", "lookup teacher":
-                    System.out.println("Insert teacher ID");
-                    String teacherDetails = scannerMenu.nextLine();
-                    // try catch wrap in while to handle errors
-                    commands.getTeacher(teacherDetails);
+                    do{
+                        System.out.println("Insert teacher ID");
+                        String teacherDetails = scannerMenu.nextLine();
+                        errorData=false;
+                        try {
+                            commands.getTeacher(teacherDetails);
+                        }catch (NullPointerException e){
+                            System.out.println("Insert a valid Teacher ID");
+                            errorData =true;
+                        }
+                    }while (errorData);
                     System.out.println("press enter to continue");
                     pressEnterToContinue = scannerMenu.nextLine();
                     break;
