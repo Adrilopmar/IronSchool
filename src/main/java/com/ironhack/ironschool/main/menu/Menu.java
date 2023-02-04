@@ -5,9 +5,9 @@ import com.ironhack.ironschool.main.utils.Commands;
 import java.util.Scanner;
 
 public class Menu {
-    static Commands commands = new Commands();
+
+        static Commands commands = new Commands();
     public static void start() {
-        Commands commands = new Commands();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Hello Principal, \n Welcome to School Simulator! \n" +
                 "First things first, what's the name of your school? ");
@@ -51,10 +51,9 @@ public class Menu {
             }
 
         }while (successInputTeachers);
-        System.out.println("Perfect then.\nNow for last but not least, let's talk about students");
         boolean successInputStudents = false;
         do {
-            System.out.println("Ok, now let's talk about teachers.\nHow many teachers does " + schoolName + " has?");
+        System.out.println("Perfect then.\nNow for last but not least, let's talk about students");
             try {
                     System.out.println("How many students does the amazing " + schoolName + " has?");
                     int howManyStudents = Integer.parseInt(scanner.nextLine());
@@ -74,7 +73,7 @@ public class Menu {
             }
         }while (successInputStudents);
         System.out.println("Ok... I think everything is set up.");
-        scanner.close();
+//        scanner.close();
     }
 
     public static void menuCommands() {
@@ -103,16 +102,20 @@ public class Menu {
                         String studentId = scannerMenu.nextLine();
                         System.out.println("Insert course ID");
                         String courseId = scannerMenu.nextLine();
+                        if (studentId.equalsIgnoreCase("c")||studentId.equalsIgnoreCase("cancel")||
+                                courseId.equalsIgnoreCase("c")||courseId.equalsIgnoreCase("cancel")){
+                            break;
+                        }
                         errorData = false;
                         try{
                             commands.enroll(studentId, courseId);
                         } catch (NullPointerException e){
-                            System.out.println("Insert a valid Student ID & Course ID");
+                            System.out.println("Insert a valid Student ID & Course ID.\nOr insert 'cancel' or 'c' to go back to menu ");
                             errorData =true;
                         }
                     }while (errorData);
                     System.out.println("press enter to continue");
-                    pressEnterToContinue = scannerMenu.nextLine();
+                    scannerMenu.nextLine();
                     break;
                 case "2", "assign":
                     do {
@@ -120,88 +123,101 @@ public class Menu {
                         String assignTeacherId = scannerMenu.nextLine();
                         System.out.println("Insert course ID");
                         String assignCourseId = scannerMenu.nextLine();
+                        if (assignTeacherId.equalsIgnoreCase("c")||assignTeacherId.equalsIgnoreCase("cancel")||
+                                assignCourseId.equalsIgnoreCase("c")||assignCourseId.equalsIgnoreCase("cancel")){
+                            break;
+                        }
                         errorData = false;
                         try {
                             commands.assignTeacherCourse(assignTeacherId, assignCourseId);
                         }catch (NullPointerException e){
-                            System.out.println("Insert a valid Teacher ID & Course ID");
+                            System.out.println("Insert a valid Teacher ID & Course ID.\nOr insert 'cancel' or 'c' to go back to menu ");
                             errorData =true;
                         }
                     }while (errorData);
                     System.out.println("press enter to continue");
-                    pressEnterToContinue = scannerMenu.nextLine();
+                    scannerMenu.nextLine();
                     break;
                 case "3", "show courses":
-                    System.out.println(commands.getCourses());
+                    System.out.println(commands.getCourses().values());
                     System.out.println("press enter to continue");
-                    pressEnterToContinue = scannerMenu.nextLine();
+                    scannerMenu.nextLine();
                     break;
                 case "4", "lookup course":
                     do{
                     System.out.println("Insert course ID");
                     String courseDetails = scannerMenu.nextLine();
+                        if (courseDetails.equalsIgnoreCase("c")||courseDetails.equalsIgnoreCase("cancel")){
+                            break;
+                        }
                         errorData =false;
                         try {
-                    commands.getCourse(courseDetails);
+                            System.out.println(commands.getCourse(courseDetails));
                         }catch (NullPointerException e){
-                            System.out.println("Insert a valid Course ID");
+                            System.out.println("Insert a valid Course ID.\nOr insert 'cancel' or 'c' to go back to menu ");
                             errorData =true;
                         }
                     }while (errorData);
                     System.out.println("press enter to continue");
-                    pressEnterToContinue = scannerMenu.nextLine();
+                    scannerMenu.nextLine();
                     break;
                 case "5", "show students":
-                    System.out.println(commands.getStudentsList());
+                    System.out.println(commands.getStudentsList().values());
                     System.out.println("press enter to continue");
-                    pressEnterToContinue = scannerMenu.nextLine();
+                    scannerMenu.nextLine();
                     break;
                 case "6", "lookup student":
                     do{
                         System.out.println("Insert student ID");
                         String studentDetails = scannerMenu.nextLine();
+                        if (studentDetails.equalsIgnoreCase("c")||studentDetails.equalsIgnoreCase("cancel")){
+                            break;
+                        }
                         errorData=false;
                     try {
-                        commands.getStudent(studentDetails);
+                        System.out.println( commands.getStudent(studentDetails));
                     }catch (NullPointerException e){
-                        System.out.println("Insert a valid Student ID");
+                        System.out.println("Insert a valid Student ID.\nOr insert 'cancel' or 'c' to go back to menu ");
                         errorData =true;
                 }
                     }while(errorData);
                     System.out.println("press enter to continue");
-                    pressEnterToContinue = scannerMenu.nextLine();
+                    scannerMenu.nextLine();
                     break;
                 case "7", "show teachers":
-                    System.out.println(commands.getTeacherList());
+                    System.out.println(commands.getTeacherList().values());
                     System.out.println("press enter to continue");
-                    pressEnterToContinue = scannerMenu.nextLine();
+                    scannerMenu.nextLine();
                     break;
                 case "8", "lookup teacher":
                     do{
                         System.out.println("Insert teacher ID");
                         String teacherDetails = scannerMenu.nextLine();
+                        if (teacherDetails.equalsIgnoreCase("c")||teacherDetails.equalsIgnoreCase("cancel")){
+                            break;
+                        }
                         errorData=false;
                         try {
-                            commands.getTeacher(teacherDetails);
+                            System.out.println(commands.getTeacher(teacherDetails));
                         }catch (NullPointerException e){
-                            System.out.println("Insert a valid Teacher ID");
+                            System.out.println("Insert a valid Teacher ID.\nOr insert 'cancel' or 'c' to go back to menu ");
                             errorData =true;
                         }
                     }while (errorData);
                     System.out.println("press enter to continue");
-                    pressEnterToContinue = scannerMenu.nextLine();
+                    scannerMenu.nextLine();
                     break;
                 case "9", "show profit":
                     System.out.println(commands.getCoursesProfit());
                     System.out.println("press enter to continue");
-                    pressEnterToContinue = scannerMenu.nextLine();
+                    scannerMenu.nextLine();
                     break;
                 case "10", "exit":
+                    System.out.println("Bye bye! Hope to see you soon.\n May the force be with you.");
                     isMenuOn = false;
                     scannerMenu.close();
                     break;
                 default:
-                    System.out.println("What would you do now? Here you've got the menu.");
                     break;
             }
         }
